@@ -1,0 +1,772 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Telemetry Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#F6F7F9] text-slate-900 font-sans antialiased selection:bg-emerald-500/20 selection:text-emerald-900 relative overflow-x-hidden" style="font-family: 'Inter', sans-serif;">
+
+    <!-- Background Editorial Grid System -->
+    <div class="fixed inset-0 pointer-events-none z-0 flex justify-center w-full max-w-[1360px] mx-auto overflow-hidden">
+        <!-- Vertical Lines -->
+        <div class="w-px h-full bg-black/[0.04] absolute left-4 md:left-8"></div>
+        <div class="w-px h-full bg-black/[0.04] absolute left-1/2 -translate-x-1/2"></div>
+        <div class="w-px h-full bg-black/[0.04] absolute right-4 md:right-8"></div>
+        
+        <!-- Horizontal Lines & Intersection Dots (Placed relative to top) -->
+        <div class="w-full absolute top-[180px]">
+            <div class="h-px w-[150vw] bg-black/[0.04] absolute -left-[25vw]"></div>
+            <div class="w-1.5 h-1.5 rounded-full border border-black/[0.12] bg-[#F6F7F9] absolute -top-[3px] left-[calc(50%-3px)]"></div>
+            <div class="w-1.5 h-1.5 rounded-full border border-black/[0.12] bg-[#F6F7F9] absolute -top-[3px] left-4 md:left-8 -translate-x-[3px]"></div>
+            <div class="w-1.5 h-1.5 rounded-full border border-black/[0.12] bg-[#F6F7F9] absolute -top-[3px] right-4 md:right-8 translate-x-[3px]"></div>
+        </div>
+        
+        <div class="w-full absolute top-[500px]">
+            <div class="h-px w-[150vw] bg-black/[0.04] absolute -left-[25vw]"></div>
+            <div class="w-1.5 h-1.5 rounded-full border border-black/[0.12] bg-[#F6F7F9] absolute -top-[3px] left-[calc(50%-3px)]"></div>
+        </div>
+        
+        <div class="w-full absolute top-[1100px]">
+            <div class="h-px w-[150vw] bg-black/[0.04] absolute -left-[25vw]"></div>
+            <div class="w-1.5 h-1.5 rounded-full border border-black/[0.12] bg-[#F6F7F9] absolute -top-[3px] left-[calc(50%-3px)]"></div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-black/[0.06] shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-all duration-300">
+        <div class="max-w-[1360px] mx-auto px-4 md:px-8 h-14 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <span class="font-semibold tracking-tighter text-base uppercase text-slate-900">TLMTRY</span>
+            </div>
+            
+            <!-- Center Nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
+                <a href="#" class="hover:text-slate-900 transition-colors relative group">
+                    Product
+                    <span class="absolute -bottom-5 left-0 w-full h-px bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity glow-sm"></span>
+                </a>
+                <a href="#" class="hover:text-slate-900 transition-colors relative group">
+                    Solutions
+                    <span class="absolute -bottom-5 left-0 w-full h-px bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                </a>
+                <a href="#" class="hover:text-slate-900 transition-colors relative group">Integrations</a>
+                <a href="#" class="hover:text-slate-900 transition-colors relative group">Pricing</a>
+                <a href="#" class="hover:text-slate-900 transition-colors relative group">Docs</a>
+            </nav>
+            
+            <!-- Right Actions -->
+            <div class="flex items-center gap-2 md:gap-3">
+                <a href="#" class="hidden md:inline-flex items-center justify-center h-8 px-3 text-sm font-medium text-slate-600 bg-white border border-black/[0.08] rounded-md hover:shadow-[0_2px_4px_rgba(0,0,0,0.04)] hover:text-slate-900 transition-all">Book Demo</a>
+                <a href="#" class="inline-flex items-center justify-center h-8 px-4 text-sm font-medium text-white bg-emerald-500 rounded-md shadow-[0_1px_2px_rgba(16,185,129,0.2),0_0_12px_rgba(16,185,129,0.15)] hover:bg-emerald-400 hover:-translate-y-[0.5px] transition-all">Start Free Trial</a>
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden flex items-center justify-center h-8 w-8 text-slate-600 hover:text-slate-900 transition-colors ml-1">
+                    <iconify-icon icon="solar:hamburger-menu-linear" class="text-2xl"></iconify-icon>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative z-10 pt-32 pb-20 w-full max-w-[1360px] mx-auto px-4 md:px-8 flex flex-col items-center">
+        <!-- Hero Content -->
+        <div class="flex flex-col items-center text-center max-w-3xl mb-16 relative">
+            <div class="inline-flex items-center gap-2 px-2.5 py-1 mb-6 rounded-full border border-black/[0.06] bg-white text-[10px] font-medium text-slate-600 tracking-widest uppercase shadow-sm">
+                <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" style="box-shadow: 0 0 8px rgba(16,185,129,0.5);"></div>
+                AI Telemetry Platform
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter text-[#0F172A] leading-[1.05] mb-6">
+                Monitor Every AI System <br class="hidden md:block"> Through One Telemetry Platform
+            </h1>
+            
+            <p class="text-base text-slate-500 max-w-[600px] leading-relaxed mb-8">
+                A unified telemetry platform that helps engineering teams monitor AI agents, track infrastructure health, analyze system telemetry, detect anomalies, and respond to operational events from a single dashboard.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto mb-10">
+                <button class="w-full sm:w-auto inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-white bg-emerald-500 rounded-lg shadow-[0_2px_4px_rgba(16,185,129,0.2),0_0_16px_rgba(16,185,129,0.1)] hover:bg-emerald-400 hover:-translate-y-0.5 transition-all">
+                    Start Free Trial
+                </button>
+                <button class="w-full sm:w-auto inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-slate-700 bg-white border border-black/[0.08] rounded-lg shadow-sm hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:-translate-y-0.5 transition-all">
+                    Watch Demo
+                </button>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-3 text-xs font-medium text-slate-500">
+                <div class="flex items-center gap-1.5">
+                    <iconify-icon icon="solar:chart-line-linear" style="font-size: 16px; stroke-width: 1.5; color: #94a3b8;"></iconify-icon>
+                    Real-time AI telemetry
+                </div>
+                <div class="hidden sm:block w-1 h-1 rounded-full bg-black/[0.06]"></div>
+                <div class="flex items-center gap-1.5">
+                    <iconify-icon icon="solar:shield-warning-linear" style="font-size: 16px; stroke-width: 1.5; color: #94a3b8;"></iconify-icon>
+                    Automated anomaly detection
+                </div>
+                <div class="hidden sm:block w-1 h-1 rounded-full bg-black/[0.06]"></div>
+                <div class="flex items-center gap-1.5">
+                    <iconify-icon icon="solar:lock-keyhole-linear" style="font-size: 16px; stroke-width: 1.5; color: #94a3b8;"></iconify-icon>
+                    Security &amp; operational insights
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Preview Visual -->
+        <div class="w-full max-w-[1200px] relative rounded-2xl bg-white border border-black/[0.06] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] overflow-hidden">
+            <!-- Glow background behind dashboard -->
+            <div class="absolute inset-0 bg-emerald-500/5 blur-[100px] -z-10 rounded-2xl"></div>
+            
+            <!-- Horizontal Scroll Wrapper for Mobile -->
+            <div class="overflow-x-auto scrollbar-hide">
+                <div class="min-w-[900px] lg:min-w-0">
+                    <!-- Top Command Bar -->
+                    <div class="h-12 border-b border-black/[0.04] bg-[#FCFCFD] flex items-center justify-between px-4">
+                        <div class="flex items-center gap-1.5">
+                            <div class="w-2.5 h-2.5 rounded-full bg-black/[0.1]"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-black/[0.1]"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-black/[0.1]"></div>
+                        </div>
+                        <div class="w-[320px] h-7 bg-white border border-black/[0.06] rounded flex items-center px-2.5 shadow-sm">
+                            <iconify-icon icon="solar:magnifer-linear" class="text-slate-400 text-xs"></iconify-icon>
+                            <span class="text-[11px] text-slate-400 ml-2 font-mono">CMD + K to search telemetry...</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-1.5 px-2 py-1 rounded bg-slate-100 border border-black/[0.04]">
+                                <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                                <span class="text-[10px] font-mono text-slate-600 uppercase">SYS_OPT</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Body layout -->
+                    <div class="flex h-[600px] bg-[#F7F8FA]">
+                        <!-- Sidebar -->
+                        <div class="w-14 shrink-0 border-r border-black/[0.04] bg-white flex flex-col items-center py-4 gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center cursor-pointer shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_1px_2px_rgba(16,185,129,0.1)]">
+                                <iconify-icon icon="solar:widget-5-linear" class="text-lg"></iconify-icon>
+                            </div>
+                            <div class="w-8 h-8 rounded-lg text-slate-400 hover:text-slate-600 flex items-center justify-center cursor-pointer transition-colors">
+                                <iconify-icon icon="solar:cpu-linear" class="text-lg"></iconify-icon>
+                            </div>
+                            <div class="w-8 h-8 rounded-lg text-slate-400 hover:text-slate-600 flex items-center justify-center cursor-pointer transition-colors">
+                                <iconify-icon icon="solar:chart-square-linear" class="text-lg"></iconify-icon>
+                            </div>
+                            <div class="w-8 h-8 rounded-lg text-slate-400 hover:text-slate-600 flex items-center justify-center cursor-pointer transition-colors">
+                                <iconify-icon icon="solar:shield-linear" class="text-lg"></iconify-icon>
+                            </div>
+                            <div class="w-8 h-8 rounded-lg text-slate-400 hover:text-slate-600 flex items-center justify-center cursor-pointer transition-colors mt-auto">
+                                <iconify-icon icon="solar:settings-linear" class="text-lg"></iconify-icon>
+                            </div>
+                        </div>
+
+                        <!-- Main Grid area -->
+                        <div class="flex-1 p-5 grid grid-cols-12 grid-rows-6 gap-4 overflow-hidden relative">
+                            
+                            <!-- Global Telemetry -->
+                            <div class="col-span-4 row-span-2 bg-white border border-black/[0.04] rounded-xl p-4 shadow-sm flex flex-col justify-between">
+                                <div>
+                                    <div class="text-[11px] font-medium text-slate-500 uppercase tracking-wide">Global Telemetry Throughput</div>
+                                    <div class="text-3xl font-semibold tracking-tight tabular-nums mt-1">124.8 <span class="text-base text-slate-400 font-medium">TB/s</span></div>
+                                    <div class="text-[11px] text-emerald-600 font-medium mt-1 flex items-center gap-1">
+                                        <iconify-icon icon="solar:arrow-up-linear"></iconify-icon> +14.2% vs last hour
+                                    </div>
+                                </div>
+                                <div class="h-12 w-full mt-4 flex items-end gap-1">
+                                    <div class="w-full h-[30%] bg-slate-100 rounded-t-[1px]"></div>
+                                    <div class="w-full h-[40%] bg-slate-100 rounded-t-[1px]"></div>
+                                    <div class="w-full h-[35%] bg-slate-100 rounded-t-[1px]"></div>
+                                    <div class="w-full h-[50%] bg-slate-200 rounded-t-[1px]"></div>
+                                    <div class="w-full h-[45%] bg-slate-200 rounded-t-[1px]"></div>
+                                    <div class="w-full h-[60%] bg-emerald-100 rounded-t-[1px]"></div>
+                                    <div class="w-full h-[80%] bg-emerald-200 rounded-t-[1px]"></div>
+                                    <div class="w-full h-[100%] bg-emerald-400 rounded-t-[1px]"></div>
+                                </div>
+                            </div>
+
+                            <!-- Active Threat Signals -->
+                            <div class="col-span-4 row-span-2 bg-white border border-black/[0.04] rounded-xl p-4 shadow-sm flex flex-col justify-between">
+                                <div class="flex justify-between items-start">
+                                    <div class="text-[11px] font-medium text-slate-500 uppercase tracking-wide">Active Threat Signals</div>
+                                    <div class="w-2 h-2 rounded-full bg-orange-500 animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.6)]"></div>
+                                </div>
+                                <div class="text-4xl font-semibold tracking-tight text-slate-900 mt-2">03</div>
+                                <div class="mt-4">
+                                    <div class="flex justify-between text-[10px] text-slate-400 mb-1">
+                                        <span>Risk Level</span>
+                                        <span>High Priority</span>
+                                    </div>
+                                    <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-orange-500 w-[65%] rounded-full relative overflow-hidden">
+                                            <div class="absolute inset-0 bg-white/20 w-full animate-[pulse_2s_infinite]"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Network Radar -->
+                            <div class="col-span-4 row-span-3 bg-white border border-black/[0.04] rounded-xl p-4 shadow-sm flex flex-col relative overflow-hidden">
+                                <div class="text-[11px] font-medium text-slate-500 uppercase tracking-wide z-10">Network Telemetry Radar</div>
+                                <div class="flex-1 flex items-center justify-center relative mt-2">
+                                    <div class="absolute w-[180px] h-[180px] rounded-full border border-emerald-500/10"></div>
+                                    <div class="absolute w-[120px] h-[120px] rounded-full border border-emerald-500/20"></div>
+                                    <div class="absolute w-[60px] h-[60px] rounded-full border border-emerald-500/30"></div>
+                                    <div class="absolute w-full h-px bg-emerald-500/10"></div>
+                                    <div class="absolute h-full w-px bg-emerald-500/10"></div>
+                                    <div class="absolute w-[90px] h-[90px] origin-bottom-right bottom-1/2 right-1/2 border-r border-emerald-400 bg-gradient-to-tr from-transparent to-emerald-400/20 rounded-tr-full animate-[spin_4s_linear_infinite]"></div>
+                                    <div class="absolute top-[30%] left-[60%] w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]"></div>
+                                    <div class="absolute top-[70%] left-[30%] w-1 h-1 rounded-full bg-emerald-300"></div>
+                                </div>
+                            </div>
+
+                            <!-- AI Compute Load Projection -->
+                            <div class="col-span-8 row-span-4 bg-white border border-black/[0.04] rounded-xl p-5 shadow-sm flex flex-col relative group">
+                                <div class="flex justify-between items-start mb-6">
+                                    <div>
+                                        <h3 class="text-sm font-medium text-slate-900">AI Compute Load Projection</h3>
+                                        <p class="text-xs text-slate-500 mt-0.5">Projected AI processing capacity</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-2xl font-semibold tracking-tight text-slate-900 tabular-nums">142.8 PB</div>
+                                        <div class="text-[10px] font-mono text-slate-400 mt-0.5">Projected throughput</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex-1 flex items-end gap-2 relative">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/5 to-transparent w-[200%] animate-[slide_3s_linear_infinite]" style="animation: slide 3s linear infinite; transform: translateX(-100%);">
+                                        <style>@keyframes slide { 100% { transform: translateX(50%); } }</style>
+                                    </div>
+                                    <div class="absolute w-full h-px bg-black/[0.02] bottom-[40%]"></div>
+                                    
+                                    <div class="w-full flex flex-col justify-end h-full items-center relative group/bar"><div class="w-full bg-slate-100 rounded-t h-[30%] transition-all duration-300"></div><span class="text-[9px] text-slate-400 mt-2 font-mono">JUL</span></div>
+                                    <div class="w-full flex flex-col justify-end h-full items-center relative group/bar"><div class="w-full bg-slate-100 rounded-t h-[35%] transition-all duration-300"></div><span class="text-[9px] text-slate-400 mt-2 font-mono">AUG</span></div>
+                                    <div class="w-full flex flex-col justify-end h-full items-center relative group/bar"><div class="w-full bg-slate-200 rounded-t h-[50%] transition-all duration-300"></div><span class="text-[9px] text-slate-400 mt-2 font-mono">SEP</span></div>
+                                    
+                                    <div class="w-full flex flex-col justify-end h-full items-center relative group/bar z-10">
+                                        <div class="absolute -top-8 bg-slate-900 text-white text-[10px] px-2 py-1 rounded shadow-lg opacity-0 group-hover/bar:opacity-100 transition-opacity whitespace-nowrap font-mono tracking-tight pointer-events-none">39.2 PB</div>
+                                        <div class="w-full bg-emerald-500 rounded-t h-[85%] relative overflow-hidden shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all duration-300 group-hover/bar:-translate-y-0.5" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.1) 2px, rgba(255,255,255,0.1) 4px);"></div>
+                                        <span class="text-[9px] font-bold text-emerald-600 mt-2 font-mono">OCT</span>
+                                    </div>
+                                    
+                                    <div class="w-full flex flex-col justify-end h-full items-center relative group/bar"><div class="w-full bg-slate-200 rounded-t h-[65%] transition-all duration-300"></div><span class="text-[9px] text-slate-400 mt-2 font-mono">NOV</span></div>
+                                    <div class="w-full flex flex-col justify-end h-full items-center relative group/bar"><div class="w-full bg-slate-100 rounded-t h-[45%] transition-all duration-300"></div><span class="text-[9px] text-slate-400 mt-2 font-mono">DEC</span></div>
+                                    <div class="w-full flex flex-col justify-end h-full items-center relative group/bar"><div class="w-full bg-slate-100 rounded-t h-[30%] transition-all duration-300"></div><span class="text-[9px] text-slate-400 mt-2 font-mono">JAN</span></div>
+                                    <div class="w-full flex flex-col justify-end h-full items-center relative group/bar"><div class="w-full bg-slate-100 rounded-t h-[40%] transition-all duration-300"></div><span class="text-[9px] text-slate-400 mt-2 font-mono">FEB</span></div>
+                                    <div class="w-full flex flex-col justify-end h-full items-center relative group/bar"><div class="w-full bg-slate-100 rounded-t h-[35%] transition-all duration-300"></div><span class="text-[9px] text-slate-400 mt-2 font-mono">MAR</span></div>
+                                    <div class="w-full flex flex-col justify-end h-full items-center relative group/bar"><div class="w-full bg-slate-100 rounded-t h-[25%] transition-all duration-300"></div><span class="text-[9px] text-slate-400 mt-2 font-mono">APR</span></div>
+                                </div>
+                            </div>
+
+                            <!-- Real-Time Activity Log -->
+                            <div class="col-span-4 row-span-3 bg-white border border-black/[0.04] rounded-xl p-0 shadow-sm flex flex-col overflow-hidden">
+                                <div class="p-4 border-b border-black/[0.04] flex items-center justify-between">
+                                    <div class="text-[11px] font-medium text-slate-500 uppercase tracking-wide">Real-Time Activity Log</div>
+                                    <iconify-icon icon="solar:hamburger-menu-linear" class="text-slate-400"></iconify-icon>
+                                </div>
+                                <div class="flex-1 overflow-y-auto p-2 space-y-1 bg-[#FCFCFD]">
+                                    <div class="p-2 rounded bg-white border border-black/[0.03] shadow-sm flex flex-col gap-1.5">
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center gap-1.5 px-1.5 py-[1px] rounded bg-emerald-50 text-[9px] font-mono text-emerald-600 uppercase border border-emerald-100">
+                                                <div class="w-1 h-1 rounded-full bg-emerald-500"></div> Success
+                                            </div>
+                                            <span class="text-[9px] text-slate-400 font-mono">Just now</span>
+                                        </div>
+                                        <div class="text-[10px] text-slate-600 font-medium">Agent-X7 completed data sync across 4 nodes</div>
+                                    </div>
+                                    <div class="p-2 rounded bg-white border border-orange-500/20 shadow-sm flex flex-col gap-1.5 relative overflow-hidden">
+                                        <div class="absolute left-0 top-0 bottom-0 w-[2px] bg-orange-400"></div>
+                                        <div class="flex items-center justify-between pl-1">
+                                            <div class="flex items-center gap-1.5 px-1.5 py-[1px] rounded bg-orange-50 text-[9px] font-mono text-orange-600 uppercase border border-orange-100">
+                                                <div class="w-1 h-1 rounded-full bg-orange-500"></div> Warning
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <button class="text-[8px] font-mono bg-slate-100 hover:bg-slate-200 text-slate-500 px-1.5 py-0.5 rounded border border-black/[0.05] transition-colors">BLOCK</button>
+                                                <span class="text-[9px] text-slate-400 font-mono">12s ago</span>
+                                            </div>
+                                        </div>
+                                        <div class="text-[10px] text-slate-600 font-medium pl-1 truncate">Unrecognized payload format from IP 192.168...</div>
+                                    </div>
+                                    <div class="p-2 rounded bg-white border border-black/[0.03] shadow-sm flex flex-col gap-1.5">
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center gap-1.5 px-1.5 py-[1px] rounded bg-slate-100 text-[9px] font-mono text-slate-500 uppercase border border-slate-200">
+                                                <div class="w-1 h-1 rounded-full bg-slate-400"></div> Info
+                                            </div>
+                                            <span class="text-[9px] text-slate-400 font-mono">45s ago</span>
+                                        </div>
+                                        <div class="text-[10px] text-slate-600 font-medium">Automated workflow "Nightly Backup" initiated</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPABILITIES SECTION -->
+    <section class="relative z-10 py-16 md:py-24 w-full max-w-[1360px] mx-auto px-4 md:px-8">
+        <!-- Two Column Header -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 mb-12 md:mb-16 items-end">
+            <div class="lg:col-span-7 flex flex-col">
+                <div class="inline-flex items-center gap-2 px-2 py-1 mb-5 rounded bg-[#F2F4F7] text-[10px] font-mono text-slate-500 uppercase tracking-widest border border-black/[0.04] self-start">
+                    <div class="w-1 h-1 rounded-full bg-emerald-500"></div> Platform Capabilities
+                </div>
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-tight max-w-[560px]">
+                    Built to monitor, detect, and respond across every AI layer
+                </h2>
+            </div>
+            <div class="lg:col-span-5 pb-2">
+                <p class="text-sm text-slate-500 leading-relaxed max-w-[420px]">
+                    A unified observability engine that correlates telemetry, spots anomalies, monitors infrastructure health, and standardizes operational logs across your entire distributed environment.
+                </p>
+            </div>
+        </div>
+
+        <!-- 4-Card Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Card 1 -->
+            <div class="bg-white border border-black/[0.06] rounded-[20px] p-6 shadow-sm hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-300 flex flex-col group h-auto min-h-[300px] sm:h-[320px]">
+                <div class="w-10 h-10 rounded-lg bg-[#F7F8FA] border border-black/[0.04] flex items-center justify-center mb-5 text-slate-700">
+                    <iconify-icon icon="solar:layers-minimalistic-linear" class="text-xl"></iconify-icon>
+                </div>
+                <h3 class="text-base font-medium text-slate-900 mb-2">Unified Telemetry</h3>
+                <p class="text-xs text-slate-500 leading-relaxed mb-auto">Aggregate agent events, throughput metrics, and system streams into one standardized observability layer.</p>
+                <div class="mt-6 pt-4 border-t border-black/[0.04] flex flex-col gap-2">
+                    <div class="w-full h-1.5 bg-slate-100 rounded overflow-hidden flex"><div class="w-[30%] bg-emerald-400 h-full"></div><div class="w-[50%] bg-slate-300 h-full"></div></div>
+                    <div class="w-full h-1.5 bg-slate-100 rounded overflow-hidden flex"><div class="w-[60%] bg-cyan-400 h-full"></div><div class="w-[20%] bg-slate-300 h-full"></div></div>
+                    <div class="w-full h-1.5 bg-slate-100 rounded overflow-hidden flex"><div class="w-[80%] bg-slate-800 h-full"></div></div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white border border-black/[0.06] rounded-[20px] p-6 shadow-sm hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-300 flex flex-col group h-auto min-h-[300px] sm:h-[320px]">
+                <div class="w-10 h-10 rounded-lg bg-[#F7F8FA] border border-black/[0.04] flex items-center justify-center mb-5 text-slate-700 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <iconify-icon icon="solar:radar-linear" class="text-xl group-hover:text-orange-500 transition-colors"></iconify-icon>
+                </div>
+                <h3 class="text-base font-medium text-slate-900 mb-2">Anomaly Detection</h3>
+                <p class="text-xs text-slate-500 leading-relaxed mb-auto">Identify irregular system behavior, detect payload shifts, and prioritize high-risk operational events instantly.</p>
+                <div class="mt-6 pt-4 border-t border-black/[0.04] flex flex-col gap-2">
+                    <div class="flex justify-between items-center text-[10px] font-mono text-slate-400"><span>Confidence</span><span class="text-orange-500">94.2%</span></div>
+                    <div class="w-full h-1.5 bg-slate-100 rounded overflow-hidden">
+                        <div class="w-[94%] bg-orange-400 h-full relative"><div class="absolute right-0 top-0 h-full w-4 bg-white/40"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white border border-black/[0.06] rounded-[20px] p-6 shadow-sm hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-300 flex flex-col group h-auto min-h-[300px] sm:h-[320px]">
+                <div class="w-10 h-10 rounded-lg bg-[#F7F8FA] border border-black/[0.04] flex items-center justify-center mb-5 text-slate-700">
+                    <iconify-icon icon="solar:server-square-linear" class="text-xl"></iconify-icon>
+                </div>
+                <h3 class="text-base font-medium text-slate-900 mb-2">Infrastructure Health</h3>
+                <p class="text-xs text-slate-500 leading-relaxed mb-auto">Monitor underlying node performance, CPU spikes, memory leaks, I/O bottlenecks, and cluster stability.</p>
+                <div class="mt-6 pt-4 border-t border-black/[0.04] grid grid-cols-3 gap-2">
+                    <div class="bg-[#F7F8FA] border border-black/[0.03] rounded p-1.5 text-center"><div class="text-[9px] text-slate-400 mb-0.5 font-mono">CPU</div><div class="text-[11px] font-semibold tabular-nums">42%</div></div>
+                    <div class="bg-[#F7F8FA] border border-black/[0.03] rounded p-1.5 text-center"><div class="text-[9px] text-slate-400 mb-0.5 font-mono">RAM</div><div class="text-[11px] font-semibold tabular-nums">78%</div></div>
+                    <div class="bg-[#F7F8FA] border border-black/[0.03] rounded p-1.5 text-center"><div class="text-[9px] text-slate-400 mb-0.5 font-mono">I/O</div><div class="text-[11px] font-semibold tabular-nums">12ms</div></div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white border border-black/[0.06] rounded-[20px] p-6 shadow-sm hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-300 flex flex-col group h-auto min-h-[300px] sm:h-[320px]">
+                <div class="w-10 h-10 rounded-lg bg-[#F7F8FA] border border-black/[0.04] flex items-center justify-center mb-5 text-slate-700">
+                    <iconify-icon icon="solar:document-text-linear" class="text-xl"></iconify-icon>
+                </div>
+                <h3 class="text-base font-medium text-slate-900 mb-2">Operational Logs</h3>
+                <p class="text-xs text-slate-500 leading-relaxed mb-auto">Review structured records of deployments, model actions, incidents, and complete synchronized activity history.</p>
+                <div class="mt-6 pt-4 border-t border-black/[0.04] flex flex-col gap-1.5">
+                    <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div><div class="h-2 w-full bg-[#F7F8FA] rounded"></div></div>
+                    <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-emerald-400"></div><div class="h-2 w-[80%] bg-[#F7F8FA] rounded"></div></div>
+                    <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div><div class="h-2 w-[60%] bg-[#F7F8FA] rounded"></div></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PERFORMANCE SECTION -->
+    <section class="relative z-10 py-16 md:py-24 w-full max-w-[1360px] mx-auto px-4 md:px-8 border-t border-black/[0.04]">
+        <!-- Two Column Header -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 mb-12 md:mb-16 items-end">
+            <div class="lg:col-span-7 flex flex-col">
+                <div class="inline-flex items-center gap-2 px-2 py-1 mb-5 rounded bg-white text-[10px] font-mono text-slate-500 uppercase tracking-widest border border-black/[0.06] self-start shadow-sm">
+                    <iconify-icon icon="solar:server-minimalistic-linear" class="text-xs"></iconify-icon> System Performance
+                </div>
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-tight max-w-[520px]">
+                    Operating at scale across distributed AI systems
+                </h2>
+            </div>
+            <div class="lg:col-span-5 pb-2">
+                <p class="text-sm text-slate-500 leading-relaxed max-w-[420px]">
+                    Engineered for high-throughput environments. Our architecture processes millions of telemetry events per second with zero-latency overhead on your core infrastructure.
+                </p>
+            </div>
+        </div>
+
+        <!-- Metrics Row -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6 mb-12">
+            <div class="flex flex-col border-l-2 border-emerald-500/20 pl-4 py-1">
+                <div class="text-3xl md:text-4xl font-semibold tracking-tight tabular-nums text-slate-900 mb-1">4,210+</div>
+                <div class="text-xs font-medium text-slate-500">Active AI Agents</div>
+            </div>
+            <div class="flex flex-col border-l-2 border-black/[0.04] pl-4 py-1">
+                <div class="text-3xl md:text-4xl font-semibold tracking-tight tabular-nums text-slate-900 mb-1">124.8 <span class="text-base md:text-lg text-slate-400">TB/s</span></div>
+                <div class="text-xs font-medium text-slate-500">Data Throughput</div>
+            </div>
+            <div class="flex flex-col border-l-2 border-black/[0.04] pl-4 py-1">
+                <div class="text-3xl md:text-4xl font-semibold tracking-tight tabular-nums text-slate-900 mb-1">99.99%</div>
+                <div class="text-xs font-medium text-slate-500">System Uptime</div>
+            </div>
+            <div class="flex flex-col border-l-2 border-black/[0.04] pl-4 py-1">
+                <div class="text-3xl md:text-4xl font-semibold tracking-tight tabular-nums text-slate-900 mb-1">32</div>
+                <div class="text-xs font-medium text-slate-500">Regions Monitored</div>
+            </div>
+        </div>
+
+        <!-- Large Visual System Block -->
+        <div class="w-full bg-white border border-black/[0.06] rounded-[22px] shadow-sm p-3 flex flex-col lg:flex-row gap-3 h-auto lg:h-[420px]">
+            
+            <!-- Left Area: Main Chart -->
+            <div class="lg:w-[65%] min-h-[240px] lg:min-h-0 bg-[#F7F8FA] rounded-xl border border-black/[0.03] p-4 md:p-6 flex flex-col relative overflow-hidden group">
+                <div class="flex justify-between items-center mb-8 relative z-10">
+                    <div class="flex items-center gap-2 md:gap-3">
+                        <div class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
+                        <span class="text-xs md:text-sm font-medium text-slate-900">Live Network Throughput</span>
+                    </div>
+                    <div class="hidden sm:flex items-center gap-2 bg-white px-2 py-1 rounded border border-black/[0.04] shadow-sm text-[10px] font-mono text-slate-500">
+                        <span>1H</span><div class="w-px h-3 bg-black/[0.1]"></div><span class="text-slate-900">24H</span><div class="w-px h-3 bg-black/[0.1]"></div><span>7D</span>
+                    </div>
+                </div>
+                
+                <!-- Chart SVG Simulation -->
+                <div class="flex-1 w-full relative mt-auto border-b border-l border-black/[0.05]">
+                    <!-- Horizontal Grid lines -->
+                    <div class="absolute w-full h-px bg-black/[0.03] bottom-1/4"></div>
+                    <div class="absolute w-full h-px bg-black/[0.03] bottom-2/4"></div>
+                    <div class="absolute w-full h-px bg-black/[0.03] bottom-3/4"></div>
+                    
+                    <svg class="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+                        <defs>
+                            <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="rgba(16,185,129,0.1)"></stop>
+                                <stop offset="100%" stop-color="rgba(16,185,129,0)"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path d="M0,100 L0,70 Q10,60 20,75 T40,60 T60,40 T80,50 T100,20 L100,100 Z" fill="url(#chartGradient)"></path>
+                        <path d="M0,80 Q15,75 25,85 T50,70 T75,60 T100,55" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="0.5" stroke-dasharray="2 2"></path>
+                        <path d="M0,70 Q10,60 20,75 T40,60 T60,40 T80,50 T100,20" fill="none" stroke="#10B981" stroke-width="1.5"></path>
+                        <circle cx="60" cy="40" r="1.5" fill="white" stroke="#10B981" stroke-width="0.5"></circle>
+                        <circle cx="100" cy="20" r="2" fill="#10B981" class="animate-pulse"></circle>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Right Area: Panels Stack -->
+            <div class="lg:w-[35%] flex flex-col gap-3">
+                <!-- Node Status Panel -->
+                <div class="flex-1 bg-[#F7F8FA] rounded-xl border border-black/[0.03] p-4 flex flex-col">
+                    <div class="text-[11px] font-mono text-slate-500 uppercase tracking-widest mb-3">Cluster Nodes</div>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between p-2 rounded bg-white border border-black/[0.03] shadow-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                                <span class="text-[11px] font-medium text-slate-700 font-mono">eu-west-node-01</span>
+                            </div>
+                            <span class="text-[10px] text-slate-400">9ms</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 rounded bg-white border border-black/[0.03] shadow-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                                <span class="text-[11px] font-medium text-slate-700 font-mono">us-east-node-14</span>
+                            </div>
+                            <span class="text-[10px] text-slate-400">12ms</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 rounded bg-white border border-orange-200 shadow-sm relative overflow-hidden">
+                            <div class="absolute left-0 top-0 bottom-0 w-[2px] bg-orange-400"></div>
+                            <div class="flex items-center gap-2 pl-1">
+                                <div class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></div>
+                                <span class="text-[11px] font-medium text-slate-700 font-mono">ap-south-node-03</span>
+                            </div>
+                            <span class="text-[10px] text-orange-600 font-medium">142ms</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Alerts Panel -->
+                <div class="flex-1 bg-[#F7F8FA] rounded-xl border border-black/[0.03] p-4 flex flex-col">
+                    <div class="text-[11px] font-mono text-slate-500 uppercase tracking-widest mb-3">Recent Signals</div>
+                    <div class="space-y-3 mt-auto">
+                        <div class="flex items-start gap-3">
+                            <div class="mt-0.5"><iconify-icon icon="solar:info-circle-linear" class="text-slate-400"></iconify-icon></div>
+                            <div>
+                                <div class="text-[11px] font-medium text-slate-700">Auto-scaling initiated</div>
+                                <div class="text-[10px] text-slate-400 mt-0.5">Capacity increased by 12% in us-east</div>
+                            </div>
+                        </div>
+                        <div class="w-full h-px bg-black/[0.04]"></div>
+                        <div class="flex items-start gap-3">
+                            <div class="mt-0.5"><iconify-icon icon="solar:shield-warning-linear" class="text-slate-400"></iconify-icon></div>
+                            <div>
+                                <div class="text-[11px] font-medium text-slate-700">Payload anomaly detected</div>
+                                <div class="text-[10px] text-slate-400 mt-0.5">Rule #492 triggered • Review suggested</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="relative z-10 py-16 md:py-24 w-full max-w-[1360px] mx-auto px-4 md:px-8 border-t border-black/[0.04]">
+        <!-- Two Column Header -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 mb-12 md:mb-16 items-end">
+            <div class="lg:col-span-7 flex flex-col">
+                <div class="inline-flex items-center gap-2 px-2 py-1 mb-5 rounded bg-white text-[10px] font-mono text-slate-500 uppercase tracking-widest border border-black/[0.06] self-start shadow-sm">
+                    <div class="w-1.5 h-1.5 rounded-sm bg-slate-300"></div> Customer Validation
+                </div>
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-tight max-w-[520px]">
+                    Trusted by engineering teams operating AI at scale
+                </h2>
+            </div>
+            <div class="lg:col-span-5 pb-2">
+                <p class="text-sm text-slate-500 leading-relaxed max-w-[420px]">
+                    Deployed in real production environments. See how top infrastructure teams use our platform to gain full observability and reduce incident response times.
+                </p>
+            </div>
+        </div>
+
+        <!-- Structured Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Card 1 -->
+            <div class="bg-white border border-black/[0.06] rounded-[20px] p-6 shadow-sm flex flex-col justify-between min-h-[260px] md:h-[280px] group hover:border-black/[0.12] transition-colors">
+                <div>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-8 h-8 rounded-full bg-slate-50 border border-black/[0.06] flex items-center justify-center text-[10px] font-medium text-slate-600 font-mono">AL</div>
+                        <div>
+                            <div class="text-sm font-medium text-slate-900 leading-tight">Alex Liu</div>
+                            <div class="text-[11px] text-slate-500 mt-0.5">Staff Infra Engineer • Vercel</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-700 leading-relaxed font-medium">"We finally have full visibility across all agent pipelines. Telemetry correlation across our distributed nodes is extremely reliable and precise."</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-black/[0.04] flex items-center justify-between">
+                    <div class="text-[10px] font-mono text-slate-400 uppercase">SYS_LOG_VAL</div>
+                    <div class="flex items-center gap-1.5 px-2 py-1 rounded bg-emerald-50 text-[9px] font-mono text-emerald-700 border border-emerald-100 group-hover:bg-emerald-100 transition-colors">
+                        <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_4px_rgba(16,185,129,0.5)]"></div> PRODUCTION ACTIVE
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white border border-black/[0.06] rounded-[20px] p-6 shadow-sm flex flex-col justify-between min-h-[260px] md:h-[280px] group hover:border-black/[0.12] transition-colors">
+                <div>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-8 h-8 rounded-full bg-slate-50 border border-black/[0.06] flex items-center justify-center text-[10px] font-medium text-slate-600 font-mono">SJ</div>
+                        <div>
+                            <div class="text-sm font-medium text-slate-900 leading-tight">Sarah Jenkins</div>
+                            <div class="text-[11px] text-slate-500 mt-0.5">Head of AI Ops • Stripe</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-700 leading-relaxed font-medium">"Reduced incident response time by 42%. The anomaly detection caught a massive payload drift that our previous monitoring tools completely missed."</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-black/[0.04] flex items-center justify-between">
+                    <div class="flex items-center gap-2 text-[10px] font-mono text-slate-500">
+                        <iconify-icon icon="solar:stopwatch-linear"></iconify-icon> -42% MTTR
+                    </div>
+                    <div class="flex items-center gap-1.5 px-2 py-1 rounded bg-emerald-50 text-[9px] font-mono text-emerald-700 border border-emerald-100 group-hover:bg-emerald-100 transition-colors">
+                        <iconify-icon icon="solar:check-circle-linear" class="text-xs"></iconify-icon> VERIFIED METRIC
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white border border-black/[0.06] rounded-[20px] p-6 shadow-sm flex flex-col justify-between min-h-[260px] md:h-[280px] group hover:border-black/[0.12] transition-colors md:col-span-2 lg:col-span-1">
+                <div>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-8 h-8 rounded-full bg-slate-50 border border-black/[0.06] flex items-center justify-center text-[10px] font-medium text-slate-600 font-mono">MK</div>
+                        <div>
+                            <div class="text-sm font-medium text-slate-900 leading-tight">Marcus Kim</div>
+                            <div class="text-[11px] text-slate-500 mt-0.5">VP Engineering • Databricks</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-700 leading-relaxed font-medium">"The zero-latency overhead claim is real. We process petabytes of telemetry and the integration footprint on our compute nodes remains negligible."</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-black/[0.04] flex items-center justify-between">
+                    <div class="w-24 h-4 bg-[#F7F8FA] rounded border border-black/[0.03] overflow-hidden relative">
+                        <svg class="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 20">
+                            <path d="M0,15 L20,10 L40,12 L60,5 L80,8 L100,2" fill="none" stroke="#94a3b8" stroke-width="1"></path>
+                        </svg>
+                    </div>
+                    <div class="flex items-center gap-1.5 px-2 py-1 rounded bg-slate-50 text-[9px] font-mono text-slate-500 border border-black/[0.06]">
+                        LATENCY: &lt;1ms
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="relative z-10 py-16 md:py-24 w-full max-w-[1360px] mx-auto px-4 md:px-8 border-t border-black/[0.04]">
+        <!-- Two Column Header -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 mb-12 md:mb-16 items-end">
+            <div class="lg:col-span-7 flex flex-col">
+                <div class="inline-flex items-center gap-2 px-2 py-1 mb-5 rounded bg-white text-[10px] font-mono text-slate-500 uppercase tracking-widest border border-black/[0.06] self-start shadow-sm">
+                    <iconify-icon icon="solar:tag-price-linear" class="text-xs"></iconify-icon> Plans &amp; Pricing
+                </div>
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-tight max-w-[520px]">
+                    Structured for engineering teams of all sizes
+                </h2>
+            </div>
+            <div class="lg:col-span-5 pb-2">
+                <p class="text-sm text-slate-500 leading-relaxed max-w-[420px]">
+                    Predictable pricing based on telemetry throughput. Start small and scale seamlessly as your AI infrastructure grows without unexpected spikes.
+                </p>
+            </div>
+        </div>
+
+        <!-- Pricing Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Tier 1 -->
+            <div class="bg-white border border-black/[0.06] rounded-[20px] p-8 shadow-sm flex flex-col hover:border-black/[0.12] transition-colors">
+                <div class="text-sm font-medium text-slate-900 mb-1">Developer</div>
+                <div class="text-xs text-slate-500 mb-6">For local testing and small setups.</div>
+                <div class="mb-6 flex items-baseline gap-1">
+                    <span class="text-4xl font-semibold tracking-tight tabular-nums text-slate-900">$0</span>
+                    <span class="text-sm text-slate-400">/mo</span>
+                </div>
+                <button class="w-full inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-slate-700 bg-white border border-black/[0.08] rounded-lg shadow-sm hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:-translate-y-0.5 transition-all mb-8">
+                    Start Free
+                </button>
+                <div class="text-[11px] font-mono text-slate-400 uppercase tracking-widest mb-4">Included capabilities</div>
+                <ul class="space-y-3 mt-auto">
+                    <li class="flex items-start gap-3 text-sm text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-base shrink-0 mt-0.5"></iconify-icon> Up to 5 AI Agents</li>
+                    <li class="flex items-start gap-3 text-sm text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-base shrink-0 mt-0.5"></iconify-icon> 10GB Data Throughput</li>
+                    <li class="flex items-start gap-3 text-sm text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-base shrink-0 mt-0.5"></iconify-icon> 7-day Log Retention</li>
+                    <li class="flex items-start gap-3 text-sm text-slate-400"><iconify-icon icon="solar:close-circle-linear" class="text-slate-300 text-base shrink-0 mt-0.5"></iconify-icon> Anomaly Detection</li>
+                </ul>
+            </div>
+
+            <!-- Tier 2 (Highlighted) -->
+            <div class="bg-[#FCFCFD] border-2 border-emerald-500 rounded-[20px] p-8 shadow-[0_8px_30px_rgba(16,185,129,0.1)] flex flex-col relative transform md:-translate-y-2 mt-6 md:mt-0">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-emerald-500 text-white text-[10px] font-mono font-medium px-3 py-1 rounded-full uppercase tracking-widest shadow-sm whitespace-nowrap">Most Popular</div>
+                <div class="text-sm font-medium text-slate-900 mb-1">Production</div>
+                <div class="text-xs text-slate-500 mb-6">For scaling infrastructure teams.</div>
+                <div class="mb-6 flex items-baseline gap-1">
+                    <span class="text-4xl font-semibold tracking-tight tabular-nums text-slate-900">$249</span>
+                    <span class="text-sm text-slate-400">/mo</span>
+                </div>
+                <button class="w-full inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-white bg-emerald-500 rounded-lg shadow-[0_2px_4px_rgba(16,185,129,0.2),0_0_16px_rgba(16,185,129,0.1)] hover:bg-emerald-400 hover:-translate-y-0.5 transition-all mb-8">
+                    Start Free Trial
+                </button>
+                <div class="text-[11px] font-mono text-slate-400 uppercase tracking-widest mb-4">Everything in Developer, plus</div>
+                <ul class="space-y-3 mt-auto">
+                    <li class="flex items-start gap-3 text-sm text-slate-700 font-medium"><iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-base shrink-0 mt-0.5"></iconify-icon> Unlimited AI Agents</li>
+                    <li class="flex items-start gap-3 text-sm text-slate-700 font-medium"><iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-base shrink-0 mt-0.5"></iconify-icon> 5TB Data Throughput</li>
+                    <li class="flex items-start gap-3 text-sm text-slate-700 font-medium"><iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-base shrink-0 mt-0.5"></iconify-icon> Real-time Anomaly Detection</li>
+                    <li class="flex items-start gap-3 text-sm text-slate-700 font-medium"><iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-base shrink-0 mt-0.5"></iconify-icon> 30-day Log Retention</li>
+                </ul>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="bg-white border border-black/[0.06] rounded-[20px] p-8 shadow-sm flex flex-col hover:border-black/[0.12] transition-colors">
+                <div class="text-sm font-medium text-slate-900 mb-1">Enterprise</div>
+                <div class="text-xs text-slate-500 mb-6">For massive distributed systems.</div>
+                <div class="mb-6 flex items-baseline gap-1">
+                    <span class="text-4xl font-semibold tracking-tight text-slate-900">Custom</span>
+                </div>
+                <button class="w-full inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-slate-700 bg-white border border-black/[0.08] rounded-lg shadow-sm hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:-translate-y-0.5 transition-all mb-8">
+                    Contact Sales
+                </button>
+                <div class="text-[11px] font-mono text-slate-400 uppercase tracking-widest mb-4">Everything in Production, plus</div>
+                <ul class="space-y-3 mt-auto">
+                    <li class="flex items-start gap-3 text-sm text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-base shrink-0 mt-0.5"></iconify-icon> Unlimited Data Throughput</li>
+                    <li class="flex items-start gap-3 text-sm text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-base shrink-0 mt-0.5"></iconify-icon> Dedicated Node Deployment</li>
+                    <li class="flex items-start gap-3 text-sm text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-base shrink-0 mt-0.5"></iconify-icon> Custom Retention Policies</li>
+                    <li class="flex items-start gap-3 text-sm text-slate-600"><iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-base shrink-0 mt-0.5"></iconify-icon> 24/7 Priority SLA Response</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA & FOOTER -->
+    <section class="relative z-10 w-full max-w-[1360px] mx-auto px-4 md:px-8 pb-12">
+        <!-- CTA Box -->
+        <div class="bg-slate-900 rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 mb-16 md:mb-20 relative overflow-hidden">
+            <!-- Subtle background effect -->
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(16,185,129,0.15),transparent_50%)]"></div>
+            
+            <div class="relative z-10 max-w-xl text-center md:text-left">
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-white leading-tight mb-4">
+                    Ready to monitor your AI infrastructure?
+                </h2>
+                <p class="text-sm text-slate-400 leading-relaxed">
+                    Join leading engineering teams using TLMTRY to gain full observability across their distributed environments.
+                </p>
+            </div>
+            
+            <div class="relative z-10 flex flex-col sm:flex-row items-center gap-3 md:gap-4 w-full md:w-auto shrink-0">
+                <button class="w-full sm:w-auto inline-flex items-center justify-center h-11 px-6 text-sm font-medium text-slate-900 bg-white rounded-lg shadow-sm hover:bg-slate-50 transition-colors">
+                    Start Free Trial
+                </button>
+                <button class="w-full sm:w-auto inline-flex items-center justify-center h-11 px-6 text-sm font-medium text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-colors backdrop-blur-sm">
+                    Read Documentation
+                </button>
+            </div>
+        </div>
+
+        <!-- Minimal Footer -->
+        <footer class="border-t border-black/[0.04] pt-12 pb-8 grid grid-cols-2 md:grid-cols-5 gap-y-10 gap-x-8">
+            <div class="col-span-2 md:col-span-2 flex flex-col">
+                <span class="font-semibold tracking-tighter text-base uppercase text-slate-900 mb-4">TLMTRY</span>
+                <p class="text-xs text-slate-500 mb-6 max-w-[200px] leading-relaxed">The unified observability platform for modern AI engineering teams.</p>
+                <div class="flex items-center gap-4 text-slate-400">
+                    <a href="#" class="hover:text-slate-900 transition-colors"><iconify-icon icon="solar:twitter-linear" class="text-lg"></iconify-icon></a>
+                    <a href="#" class="hover:text-slate-900 transition-colors"><iconify-icon icon="solar:github-linear" class="text-lg"></iconify-icon></a>
+                </div>
+            </div>
+            
+            <div class="flex flex-col gap-3">
+                <span class="text-xs font-semibold text-slate-900 mb-1">Product</span>
+                <a href="#" class="text-xs text-slate-500 hover:text-slate-900 transition-colors">Platform</a>
+                <a href="#" class="text-xs text-slate-500 hover:text-slate-900 transition-colors">Telemetry</a>
+                <a href="#" class="text-xs text-slate-500 hover:text-slate-900 transition-colors">Security</a>
+                <a href="#" class="text-xs text-slate-500 hover:text-slate-900 transition-colors">Pricing</a>
+            </div>
+            
+            <div class="flex flex-col gap-3">
+                <span class="text-xs font-semibold text-slate-900 mb-1">Resources</span>
+                <a href="#" class="text-xs text-slate-500 hover:text-slate-900 transition-colors">Documentation</a>
+                <a href="#" class="text-xs text-slate-500 hover:text-slate-900 transition-colors">API Reference</a>
+                <a href="#" class="text-xs text-slate-500 hover:text-slate-900 transition-colors">Blog</a>
+                <a href="#" class="text-xs text-slate-500 hover:text-slate-900 transition-colors">Case Studies</a>
+            </div>
+            
+            <div class="flex flex-col gap-3">
+                <span class="text-xs font-semibold text-slate-900 mb-1">Company</span>
+                <a href="#" class="text-xs text-slate-500 hover:text-slate-900 transition-colors">About</a>
+                <a href="#" class="text-xs text-slate-500 hover:text-slate-900 transition-colors">Careers</a>
+                <a href="#" class="text-xs text-slate-500 hover:text-slate-900 transition-colors">Legal</a>
+                <a href="#" class="text-xs text-slate-500 hover:text-slate-900 transition-colors">Contact</a>
+            </div>
+            
+            <div class="col-span-2 md:col-span-5 flex flex-col md:flex-row items-center justify-between pt-8 border-t border-black/[0.04] mt-2 text-[10px] text-slate-400 font-mono gap-4 md:gap-0">
+                <span>© 2026 TLMTRY Systems Inc. All rights reserved.</span>
+                <div class="flex gap-4">
+                    <span class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div> All Systems Operational</span>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+
+</body></html>
